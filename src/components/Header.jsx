@@ -1,21 +1,16 @@
-import { useState, useEffect } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { company, navLinks } from '../data/companyInfo'
 import styles from './Header.module.css'
 
-const NAV = [
-  { to: '/',         label: '홈',      end: true },
-  { to: '/about',    label: '회사소개' },
-  { to: '/services', label: '서비스'   },
-  { to: '/contact',  label: '문의'     },
-]
-
 export default function Header() {
-  const [scrolled,  setScrolled]  = useState(false)
-  const [menuOpen,  setMenuOpen]  = useState(false)
+  const [scrolled,       setScrolled]       = useState(false)
+  const [menuOpen,       setMenuOpen]       = useState(false)
+  const [activeSection,  setActiveSection]  = useState('')
+  const observerRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -24,76 +19,76 @@ export default function Header() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      { rootMargin: '-35% 0px -55% 0px' }
+    )
+    document.querySelectorAll('section[id]').forEach(s => observerRef.current.observe(s))
+    return () => observerRef.current?.disconnect()
+  }, [])
+
+  const close = () => setMenuOpen(false)
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
 
-        {/* 로고 */}
-        <Link to="/" className={styles.logo} onClick={() => setMenuOpen(false)}>
+        <a href="#hero" className={styles.logo} onClick={close}>
           <span className={styles.logoMark}>
             <span className={styles.logoRing} />
             <span className={styles.logoDot} />
           </span>
           <span className={styles.logoText}>
-            Blue<span className={styles.logoSub}>Company</span>
+            {company.logoPrimary}<span className={styles.logoSub}>{company.logoSecondary}</span>
           </span>
-        </Link>
+        </a>
 
-        {/* 데스크탑 네비 */}
-        <nav className={styles.desktopNav}>
-          {NAV.map(n => (
-            <NavLink
-              key={n.to}
-              to={n.to}
-              end={n.end}
-              className={({ isActive }) =>
-                `${styles.navLink} ${isActive ? styles.active : ''}`
-              }
+        <nav className={styles.desktopNav} aria-label="메인 메뉴">
+          {navLinks.map(n => (
+            <a
+              key={n.href}
+              href={n.href}
+              className={`${styles.navLink} ${activeSection === n.href.slice(1) ? styles.active : ''}`}
             >
               {n.label}
-            </NavLink>
+            </a>
           ))}
         </nav>
 
         <div className={styles.right}>
-          <Link to="/contact" className={`btn btn-primary ${styles.ctaBtn}`}>
-            무료 상담
-          </Link>
+          <a href="#contact" className={`btn btn-primary ${styles.ctaBtn}`}>무료 상담</a>
           <button
             className={`${styles.burger} ${menuOpen ? styles.open : ''}`}
             onClick={() => setMenuOpen(v => !v)}
-            aria-label="메뉴"
+            aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'}
+            aria-expanded={menuOpen}
           >
             <span /><span /><span />
           </button>
         </div>
       </div>
 
-      {/* 모바일 드로어 */}
       {menuOpen && (
-        <div className={styles.drawer}>
-          {NAV.map(n => (
-            <NavLink
-              key={n.to}
-              to={n.to}
-              end={n.end}
-              className={({ isActive }) =>
-                `${styles.drawerLink} ${isActive ? styles.active : ''}`
-              }
-              onClick={() => setMenuOpen(false)}
-            >
+        <nav className={styles.drawer} aria-label="모바일 메뉴">
+          {navLinks.map(n => (
+            <a key={n.href} href={n.href} className={styles.drawerLink} onClick={close}>
               {n.label}
-            </NavLink>
+            </a>
           ))}
-          <Link
-            to="/contact"
+          <a
+            href="#contact"
             className="btn btn-primary"
             style={{ width: '100%', marginTop: '1rem' }}
-            onClick={() => setMenuOpen(false)}
+            onClick={close}
           >
             무료 상담
-          </Link>
-        </div>
+          </a>
+        </nav>
       )}
     </header>
   )
