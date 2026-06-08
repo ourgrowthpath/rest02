@@ -1,79 +1,112 @@
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0 0 auto 0;
   z-index: 1000;
   padding: 1.25rem 0;
-  background-color: transparent;
-  transition: all 0.3s ease;
+  transition: var(--transition-slow);
 }
 
 .scrolled {
-  background-color: rgba(13, 27, 42, 0.97);
-  padding: 0.75rem 0;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
-  backdrop-filter: blur(8px);
+  background: rgba(6,13,31,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.85rem 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
 }
 
 .inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
-.logoIcon {
-  font-size: 1.5rem;
-  color: var(--color-royal-blue-light);
-}
-
-.logoText {
-  font-size: 1.375rem;
-  font-weight: 900;
-  color: var(--color-white);
-  letter-spacing: -0.02em;
-}
-
-.logoAccent {
-  color: var(--color-royal-blue-light);
-}
-
-.nav {
-  display: flex;
-  align-items: center;
   gap: 2rem;
 }
 
+/* ── 로고 ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.logoMark {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.logoRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--blue-500);
+  box-shadow: var(--glow-blue);
+}
+
+.logoDot {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-400), var(--cyan-400));
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.logoSub {
+  color: var(--blue-400);
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-left: 1px;
+}
+
+/* ── 데스크탑 네비 ── */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+
 .navLink {
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--color-mid-gray);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  padding: 0.25rem 0;
-  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
   transition: var(--transition);
 }
 
-.navLink:hover,
+.navLink:hover {
+  color: var(--text-primary);
+  background: rgba(59,130,246,0.08);
+}
+
 .navLink.active {
-  color: var(--color-white);
-  border-bottom-color: var(--color-royal-blue-light);
+  color: var(--blue-300);
+  background: rgba(37,99,235,0.12);
+}
+
+/* ── 우측 ── */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .ctaBtn {
-  margin-left: 0.5rem;
-  padding: 0.5rem 1.25rem;
+  padding: 0.55rem 1.25rem;
   font-size: 0.875rem;
 }
 
+/* ── 버거 ── */
 .burger {
   display: none;
   flex-direction: column;
@@ -86,56 +119,46 @@
 
 .burger span {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 2px;
-  background-color: var(--color-white);
+  background: var(--text-primary);
+  border-radius: 2px;
   transition: var(--transition);
   transform-origin: center;
 }
 
-.burgerOpen span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── 드로어 ── */
+.drawer {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-deepest);
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2rem 2rem;
+  gap: 0.5rem;
+  z-index: 999;
 }
-.burgerOpen span:nth-child(2) {
-  opacity: 0;
+
+.drawerLink {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition);
 }
-.burgerOpen span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+
+.drawerLink:hover,
+.drawerLink.active {
+  color: var(--blue-300);
 }
 
 @media (max-width: 768px) {
-  .burger {
-    display: flex;
-  }
-
-  .nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 75%;
-    max-width: 300px;
-    height: 100vh;
-    background-color: var(--color-navy);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 5rem 2rem 2rem;
-    gap: 1.5rem;
-    transition: right 0.3s ease;
-    box-shadow: -4px 0 20px rgba(0,0,0,0.4);
-  }
-
-  .navOpen {
-    right: 0;
-  }
-
-  .navLink {
-    font-size: 1.125rem;
-    width: 100%;
-  }
-
-  .ctaBtn {
-    margin-left: 0;
-    width: 100%;
-    justify-content: center;
-  }
+  .desktopNav { display: none; }
+  .ctaBtn { display: none; }
+  .burger { display: flex; }
 }

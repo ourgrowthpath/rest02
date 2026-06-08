@@ -1,47 +1,41 @@
 :root {
-  /* Primary */
-  --color-dark-blue: #0d1b2a;
-  --color-navy: #162032;
-  --color-royal-blue: #1a4fa0;
-  --color-royal-blue-light: #2563c0;
-  --color-royal-blue-hover: #1e3a8a;
+  /* ── 배경 계층 ── */
+  --bg-deepest:  #020b18;   /* 최하단 배경 */
+  --bg-base:     #060d1f;   /* 기본 배경   */
+  --bg-surface:  #0b1730;   /* 카드·섹션   */
+  --bg-elevated: #0f2040;   /* 호버·강조   */
 
-  /* Accent */
-  --color-dark-green: #1a5c3a;
-  --color-dark-green-light: #22794c;
-  --color-dark-red: #8b1a1a;
-  --color-dark-red-light: #a52020;
+  /* ── 블루 포인트 ── */
+  --blue-600:  #1d4ed8;   /* 진한 블루 */
+  --blue-500:  #2563eb;   /* 기본 블루 */
+  --blue-400:  #3b82f6;   /* 밝은 블루 */
+  --blue-300:  #60a5fa;   /* 연한 블루 */
+  --cyan-400:  #22d3ee;   /* 사이언 포인트 */
+  --cyan-300:  #67e8f9;   /* 밝은 사이언 */
 
-  /* Neutrals */
-  --color-white: #ffffff;
-  --color-off-white: #f4f6f9;
-  --color-light-gray: #e2e8f0;
-  --color-mid-gray: #94a3b8;
-  --color-dark-gray: #334155;
-  --color-text: #1e293b;
+  /* ── 텍스트 ── */
+  --text-primary:   #f0f6ff;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
 
-  /* Typography */
-  --font-sans: 'Noto Sans KR', 'Roboto', sans-serif;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
+  /* ── 보더 ── */
+  --border-subtle:  rgba(59,130,246,0.12);
+  --border-default: rgba(59,130,246,0.25);
+  --border-strong:  rgba(59,130,246,0.5);
 
-  /* Spacing */
-  --section-padding: 6rem 0;
+  /* ── 글로우 ── */
+  --glow-blue: 0 0 30px rgba(37,99,235,0.25);
+  --glow-cyan: 0 0 20px rgba(34,211,238,0.2);
+
+  /* ── 폰트 ── */
+  --font: 'Noto Sans KR', 'Inter', sans-serif;
+
+  /* ── 간격 ── */
   --container-max: 1200px;
-  --container-px: 1.5rem;
+  --container-px:  1.5rem;
+  --section-py:    6rem;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
-  --shadow-lg: 0 10px 30px rgba(0,0,0,0.2);
-
-  /* Transitions */
-  --transition: all 0.3s ease;
+  /* ── 전환 ── */
+  --transition: all 0.25s ease;
+  --transition-slow: all 0.4s ease;
 }
