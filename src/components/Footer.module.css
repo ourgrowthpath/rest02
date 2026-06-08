@@ -1,0 +1,99 @@
+.footer {
+  background-color: var(--color-navy);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: auto;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding: 4rem var(--container-px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.logoIcon {
+  font-size: 1.25rem;
+  color: var(--color-royal-blue-light);
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--color-white);
+}
+
+.logoAccent {
+  color: var(--color-royal-blue-light);
+}
+
+.desc {
+  font-size: 0.875rem;
+  color: var(--color-mid-gray);
+  line-height: 1.8;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.linkGroup h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-royal-blue-light);
+  margin-bottom: 0.5rem;
+}
+
+.linkGroup a,
+.linkGroup span {
+  font-size: 0.875rem;
+  color: var(--color-mid-gray);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.linkGroup a:hover {
+  color: var(--color-white);
+}
+
+.bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.5rem 0;
+}
+
+.bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom p {
+  font-size: 0.8rem;
+  color: var(--color-mid-gray);
+}
+
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .bottom .container {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

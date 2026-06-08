@@ -1,0 +1,194 @@
+.page {
+  background-color: var(--color-dark-blue);
+  padding-top: 5rem;
+}
+
+.hero {
+  padding: 5rem 0 4rem;
+  background: linear-gradient(180deg, var(--color-navy) 0%, var(--color-dark-blue) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--color-white);
+  margin: 1rem 0;
+  line-height: 1.3;
+}
+
+.desc {
+  font-size: 1.1rem;
+  color: var(--color-mid-gray);
+  line-height: 1.8;
+}
+
+/* Values */
+.valuesSection {
+  background-color: var(--color-dark-blue);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.valueCard {
+  background: var(--color-navy);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.valueCard:hover {
+  border-color: rgba(26,79,160,0.4);
+  transform: translateY(-4px);
+}
+
+.valueIcon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.valueCard h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.valueCard p {
+  font-size: 0.875rem;
+  color: var(--color-mid-gray);
+  line-height: 1.7;
+}
+
+/* History */
+.historySection {
+  background-color: var(--color-navy);
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-royal-blue), transparent);
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  gap: 2rem;
+  position: relative;
+}
+
+.timelineItem.left {
+  align-self: flex-start;
+  justify-content: flex-end;
+  padding-right: 2rem;
+}
+
+.timelineItem.right {
+  align-self: flex-end;
+  justify-content: flex-start;
+  padding-left: 2rem;
+  margin-left: 50%;
+}
+
+.timelineContent {
+  background: var(--color-dark-blue);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 360px;
+}
+
+.year {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--color-royal-blue-light);
+  text-transform: uppercase;
+}
+
+.timelineContent h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin: 0.5rem 0;
+}
+
+.timelineContent p {
+  font-size: 0.875rem;
+  color: var(--color-mid-gray);
+  line-height: 1.7;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-royal-blue-light);
+  border: 3px solid var(--color-dark-blue);
+  flex-shrink: 0;
+  position: absolute;
+  right: -7px;
+  box-shadow: 0 0 10px rgba(26,79,160,0.6);
+}
+
+.right .dot {
+  left: -7px;
+  right: auto;
+}
+
+@media (max-width: 1024px) {
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .valuesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .line {
+    left: 1rem;
+  }
+
+  .timelineItem,
+  .timelineItem.left,
+  .timelineItem.right {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 2.5rem;
+    padding-right: 0;
+    justify-content: flex-start;
+    align-self: auto;
+  }
+
+  .timelineContent {
+    max-width: 100%;
+  }
+
+  .dot,
+  .right .dot {
+    left: calc(1rem - 7px);
+    right: auto;
+  }
+}
