@@ -1,4 +1,5 @@
 import { services, process } from '../data/companyInfo'
+import { Icon } from '../utils/iconMap'
 import styles from './Services.module.css'
 
 export default function Services() {
@@ -17,9 +18,12 @@ export default function Services() {
 
         <div className={styles.grid}>
           {services.map(s => (
-            <div key={s.id} className={styles.card}>
+            <div key={s.id} className={`${styles.card} ${s.badge === 'badge-cyan' ? styles.cardCyan : ''}`}>
+              <div className={styles.cardAccent} aria-hidden="true" />
               <div className={styles.cardTop}>
-                <span className={styles.icon}>{s.icon}</span>
+                <div className={`${styles.iconWrap} ${s.badge === 'badge-cyan' ? styles.iconCyan : ''}`}>
+                  <Icon name={s.icon} size={22} />
+                </div>
                 <span className={`badge ${s.badge}`}>{s.badgeText}</span>
               </div>
               <h3 className={styles.cardTitle}>{s.title}</h3>
@@ -27,7 +31,7 @@ export default function Services() {
               <ul className={styles.list}>
                 {s.items.map(item => (
                   <li key={item} className={styles.listItem}>
-                    <span className={styles.bullet} aria-hidden="true" />
+                    <Icon name="chevron" size={14} className={styles.bullet} />
                     {item}
                   </li>
                 ))}
@@ -51,7 +55,9 @@ export default function Services() {
                   <div className={styles.stepLabel}>{p.label}</div>
                 </div>
                 {i < process.length - 1 && (
-                  <span className={styles.stepArrow} aria-hidden="true">›</span>
+                  <span className={styles.stepArrow} aria-hidden="true">
+                    <Icon name="chevron" size={18} />
+                  </span>
                 )}
               </div>
             ))}

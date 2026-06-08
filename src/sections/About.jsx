@@ -1,4 +1,5 @@
 import { company, values } from '../data/companyInfo'
+import { Icon } from '../utils/iconMap'
 import styles from './About.module.css'
 
 const TECH = ['React / Next.js', 'Python / FastAPI', 'Node.js', 'Data Analysis', 'AI / ML', 'DevOps / Cloud']
@@ -68,7 +69,9 @@ export default function About() {
           <div className={styles.valuesGrid}>
             {values.map(v => (
               <div key={v.title} className={styles.valueCard}>
-                <span className={styles.valueIcon}>{v.icon}</span>
+                <div className={styles.iconWrap}>
+                  <Icon name={v.icon} size={24} />
+                </div>
                 <h4 className={styles.valueTitle}>{v.title}</h4>
                 <p className={styles.valueDesc}>{v.desc}</p>
               </div>

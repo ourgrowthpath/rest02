@@ -42,22 +42,22 @@ export const stats = [
 // ── 핵심 가치 ────────────────────────────────────────────────
 export const values = [
   {
-    icon: '🎯',
+    icon: 'target',
     title: '고객 중심',
     desc: '고객의 문제를 우리의 문제로 생각하고 최적의 솔루션을 제공합니다.',
   },
   {
-    icon: '🤖',
+    icon: 'brain',
     title: '기술 혁신',
     desc: 'AI와 데이터로 더 나은 솔루션을 지속적으로 만들어 갑니다.',
   },
   {
-    icon: '🤝',
+    icon: 'handshake',
     title: '신뢰 파트너',
     desc: '계약부터 유지보수까지 책임을 다하는 믿을 수 있는 파트너입니다.',
   },
   {
-    icon: '🚀',
+    icon: 'zap',
     title: '빠른 실행',
     desc: '아이디어를 실제 제품으로 빠르게 구현하여 시장 기회를 잡습니다.',
   },
@@ -67,7 +67,7 @@ export const values = [
 export const services = [
   {
     id: 'web',
-    icon: '🌐',
+    icon: 'globe',
     badge: 'badge-blue',
     badgeText: 'Web Dev',
     title: '웹 개발',
@@ -76,7 +76,7 @@ export const services = [
   },
   {
     id: 'sw',
-    icon: '⚙️',
+    icon: 'settings',
     badge: 'badge-blue',
     badgeText: 'Software',
     title: '프로그램 개발',
@@ -85,7 +85,7 @@ export const services = [
   },
   {
     id: 'data',
-    icon: '📊',
+    icon: 'barChart',
     badge: 'badge-cyan',
     badgeText: 'Data',
     title: '데이터 분석',
@@ -94,7 +94,7 @@ export const services = [
   },
   {
     id: 'ai',
-    icon: '🤖',
+    icon: 'brain',
     badge: 'badge-cyan',
     badgeText: 'AI',
     title: 'AI 솔루션',
